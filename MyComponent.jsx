@@ -1,4 +1,5 @@
 import React from 'react';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class MyComponent extends React.Component {
     constructor(props) {
@@ -18,7 +19,7 @@ class MyComponent extends React.Component {
                 Likes :
                 <span>{this.state.likesCount}</span>
                 <div>
-                    <button onClick={this.onLike}>Click Like Me</button>
+                    <RaisedButton label="Click Like Me" primary={true} onClick={this.onLike} />
                 </div>
             </div>
         );

@@ -6,6 +6,31 @@ module.exports = {
         path: __dirname,
         filename: 'bundle.js'
     },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin({
+            compressor: {
+                warnings: false,
+            },
+        }),
+        new webpack.optimize.OccurenceOrderPlugin(),
+        new webpack.optimize.UglifyJsPlugin(),
+        new webpack.BannerPlugin([
+            "//",
+            "// Reactseed v1.0.0",
+            "//",
+            "//"
+        ].join("\n"), { raw: true }),
+        new webpack.DefinePlugin({
+            "process.env": {
+                NODE_ENV: JSON.stringify("production")
+            }
+        })
+    ],    
+    //resolve: {
+    //    modulesDirectories: ['node_modules'],
+    //    alias: {},
+    //    extensions: ['', '.jsx', '.js']
+    //},
     module: {
         loaders: [
             //{test: /\.jsx?$/, loader: 'babel'}        // need .babelrc, {"presets" : ["es2015", "react"]},
